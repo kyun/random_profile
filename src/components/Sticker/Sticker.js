@@ -1,12 +1,12 @@
 import React from 'react';
 import './Sticker.scss';
+import { animated } from 'react-spring'
 
-const Sticker = () => {
-
+const Sticker = ({ name, style }) => {
   return (
-    <div className="Sticker Bad">
-      Good
-    </div>
+    <animated.div className={`Sticker ${name}`} style={style}>
+      {name}
+    </animated.div>
   )
 }
 

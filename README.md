@@ -1,8 +1,6 @@
 
 ## ToDo
 
-- Sticker 작업
-
 - Loading 작업
 
 
@@ -14,3 +12,8 @@
 
 - 데이터 없을 시, Api 호출
 
+
+
+## 21/Apr/2019
+
+- Good Sticker / Bad Sticker 작업 완료
