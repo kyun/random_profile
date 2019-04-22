@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './CardList.scss';
 import Card from 'components/Card';
+import BottomBar from 'components/BottomBar';
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -9,7 +10,10 @@ import { requestApiData, deleteData } from "actions";
 
 
 class CardList extends React.Component {
-
+  constructor(props) {
+    super(props);
+    this.child = React.createRef();
+  }
   del = () => {
     this.props.deleteData();
   }
@@ -19,17 +23,36 @@ class CardList extends React.Component {
     }
   }
   componentDidMount() {
+    console.log(this.child);
     this.props.requestApiData();
-
   }
+  superlike = () => {
+    if(this.child.current){
+    this.child.current.superlike();
+    }
+  }
+  like = () => {
+    if(this.child.current){
+      this.child.current.like();
+    }
+  }
+  dislike = () => {
+    if(this.child.current){
+    this.child.current.dislike();
+    }
+  }
+
+
   render() {
     return (
-      <div className="CardList">
-        {/* <Sticker /> */}
-        {this.props.data.map((i, j) => {
-          return <Card key={j} {...i} del={this.del} last={this.props.data.length - 1 === j ? true : false} />
-        })}
-      </div>
+      <>
+        <div className="CardList">
+          {this.props.data.map((i, j) => {
+            return <Card ref={this.child} key={j}  {...i} del={this.del} last={this.props.data.length - 1 === j ? true : false} />
+          })}
+        </div>
+        <BottomBar like={this.like} dislike={this.dislike} superlike={this.superlike}/>
+      </>
     )
   }
 

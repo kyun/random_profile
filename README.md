@@ -17,3 +17,8 @@
 ## 21/Apr/2019
 
 - Good Sticker / Bad Sticker 작업 완료
+
+
+## 22/Apr/2019
+
+- BottomBar Button 동작 구현

@@ -8,11 +8,24 @@
     border: 4px solid #63de9b;
     color: #63de9b;
     right: 0;
+    margin-right: 16px;
+    transform: rotate(-30deg);
   }
   &.Bad{
-    border: 4px solid red;
-    color: red;
+    border: 4px solid #fe5068;
+    color: #fe5068;
     left: 0;
+    margin-left: 16px;
+    transform: rotate(30deg);
+  }
+
+  &.SuperLike{
+    border: 4px solid rgb(31, 190, 250);
+    color: rgb(31, 190, 250);
+    top: 80px;
+    left: 40%;
+    transform: rotate(20deg);
+
   }
 
   background-color: rgba(255, 255, 255, 0.2);

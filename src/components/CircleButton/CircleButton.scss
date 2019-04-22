@@ -1,0 +1,22 @@
+
+.CircleButton{
+
+
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  border: none;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
+  background-color: white;
+  outline:none;
+
+  transition: transform 0.2s;
+  &:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
+  &:active{
+    transform: scale(0.8);
+  }
+}
