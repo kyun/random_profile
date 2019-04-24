@@ -3,10 +3,12 @@ import './CardList.scss';
 import Card from 'components/Card';
 import BottomBar from 'components/BottomBar';
 
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import * as Actions from 'stores/modules/user';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import Loading from 'components/Loading';
 
-import { requestApiData, deleteData } from "actions";
+// import { requestApiData, deleteData } from "actions";
 
 
 class CardList extends React.Component {
@@ -15,16 +17,15 @@ class CardList extends React.Component {
     this.child = React.createRef();
   }
   del = () => {
-    this.props.deleteData();
+    this.props.Actions.deleteData();
   }
   componentDidUpdate() {
     if (this.props.data.length === 0) {
-      this.props.requestApiData();
+      this.props.Actions.requestApiData();
     }
   }
   componentDidMount() {
-    console.log(this.child);
-    this.props.requestApiData();
+    this.props.Actions.requestApiData();
   }
   superlike = () => {
     if(this.child.current){
@@ -51,16 +52,20 @@ class CardList extends React.Component {
             return <Card ref={this.child} key={j}  {...i} del={this.del} last={this.props.data.length - 1 === j ? true : false} />
           })}
         </div>
-        <BottomBar like={this.like} dislike={this.dislike} superlike={this.superlike}/>
+        
+        {this.props.isLoading ? <Loading /> : <BottomBar like={this.like} dislike={this.dislike} superlike={this.superlike}/>}
       </>
     )
   }
 
 }
 
-const mapStateToProps = state => { return ({ data: state.data }); }
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ requestApiData, deleteData }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(CardList);
+export default connect(
+  (state) => ({
+    data: state.user.data,
+    isLoading: state.user.isLoading,
+  }),
+  (dispatch) => ({
+    Actions: bindActionCreators(Actions, dispatch)
+  })
+)(CardList);

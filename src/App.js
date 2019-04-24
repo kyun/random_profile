@@ -1,6 +1,7 @@
 import React from 'react';
 import CardList from 'components/CardList';
 import BottomBar from 'components/BottomBar';
+import Loading from 'components/Loading';
 
 class App extends React.Component {
 
@@ -9,6 +10,7 @@ class App extends React.Component {
       <main>
         <CardList />
         {/* <BottomBar /> */}
+        {/* <Loading /> */}
       </main>
     )
   }

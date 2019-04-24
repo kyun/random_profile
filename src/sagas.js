@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 
-import { REQUEST_API_DATA, receiveApiData } from "./actions";
+import { REQUEST_API_DATA, receiveApiData } from "stores/modules/user";
 import { fetchData } from './api';
 
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
